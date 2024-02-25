@@ -9,6 +9,15 @@ services:
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: nest
 
+  test-db:
+    image: postgres:latest
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+
   adminer:
     image: adminer
     restart: always

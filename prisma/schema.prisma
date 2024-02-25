@@ -15,7 +15,7 @@ model User {
   hash      String
   lastName  String?
   updatedAt DateTime   @default(now())
-  bookmarks  Bookmark[]
+  bookmarks Bookmark[]
 
   @@map("users")
 }
@@ -23,13 +23,13 @@ model User {
 model Bookmark {
   id          Int      @id @default(autoincrement())
   title       String
-  description String
+  description String?
   link        String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
   userId Int
-  user   User @relation(fields: [userId], references: [id])
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("bookmarks")
 }
